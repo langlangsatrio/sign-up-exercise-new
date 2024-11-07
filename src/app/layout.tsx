@@ -3,7 +3,9 @@ import localFont from "next/font/local";
 import "./globals.css";
 import LanguageProvider from "@/contexts/LanguageContext";
 import Navbar from "@/components/Navbar";
-
+import StoreProvider from "./StoreProvider";
+import Loading from "./loading";
+import { Suspense } from "react";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -27,14 +29,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <LanguageProvider>
-          <Navbar />
-          {children}
-        </LanguageProvider>
-      </body>
+      <Suspense fallback={<Loading />}>
+        <StoreProvider>
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+            <LanguageProvider>
+              <Navbar />
+              {children}
+            </LanguageProvider>
+          </body>
+        </StoreProvider>
+      </Suspense>
     </html>
   );
 }

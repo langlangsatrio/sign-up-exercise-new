@@ -4,7 +4,7 @@ import UsercardCollection from "@/components/UsercardCollection";
 import PostDisplayCollection from "@/components/PostDisplayCollection";
 import CreatePost from "@/components/CreatePost";
 
-const Post = () => {
+const PostPage = () => {
   return (
     <div className="bg-slate-300">
       <div className="flex justify-end px-20 py-10">
@@ -22,4 +22,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default PostPage;

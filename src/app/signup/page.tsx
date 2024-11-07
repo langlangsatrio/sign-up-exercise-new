@@ -3,7 +3,7 @@ import Form from "@/components/FormInput";
 import { callAPI } from "@/config/axios";
 import { useState } from "react";
 
-export default function Signup() {
+export default function SignupPage() {
   const [firstName, setFirstName] = useState<string>("");
   const onHandleFirstName = (e: any) => {
     setFirstName(e.target.value);

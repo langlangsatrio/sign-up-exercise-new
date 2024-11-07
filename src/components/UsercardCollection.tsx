@@ -21,7 +21,7 @@ const UsercardCollection: React.FC<ICardcollection> = () => {
 
   return data.map((value: any, index: number) => {
     return (
-      <div>
+      <div key={index}>
         <Usercard
           key={index}
           name={value.name}
