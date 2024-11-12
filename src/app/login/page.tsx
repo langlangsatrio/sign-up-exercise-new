@@ -8,6 +8,7 @@ import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/lib/redux/hooks";
 import { setSignIn } from "@/lib/redux/features/userSlice";
+import { getPostList } from "@/lib/redux/features/postSlice";
 
 export default function LoginPage() {
   const [email, setEmail] = useState<string>("");
@@ -31,8 +32,9 @@ export default function LoginPage() {
       );
       console.log("CHECK SIGIN RESPONSE: ", response.data);
       dispatch(setSignIn({ ...response.data[0], isAuth: true })); // Store data to global store redux
+      dispatch(getPostList()); //Store data seluruh post ke global store redux
       localStorage.setItem("dataUser", JSON.stringify(response.data[0]));
-      router.replace("/post");
+      router.replace(`user/${response.data[0].username}`);
     } catch (error) {
       console.log(error);
     }

@@ -4,20 +4,23 @@ import { FaRegEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { US } from "country-flag-icons/react/3x2";
 import { ID } from "country-flag-icons/react/3x2";
-import { countries } from "country-flag-icons";
 
 interface IFormInput {
-  label: string;
+  label?: string;
   type: string;
   id: string;
+  value?: string;
   placeholder?: string;
+  name?: string;
   onChange?: (e: any) => void;
 }
 
-const Form: React.FC<IFormInput> = ({
+const Forminput: React.FC<IFormInput> = ({
   label,
   type,
   id,
+  name,
+  value,
   placeholder,
   onChange,
 }) => {
@@ -41,6 +44,8 @@ const Form: React.FC<IFormInput> = ({
           <input
             type={activeType}
             id={id}
+            name={name}
+            value={value}
             className="rounded-md border p-2 w-full text-gray-900 shadow-sm my-1"
             onChange={onChange}
           />
@@ -96,6 +101,8 @@ const Form: React.FC<IFormInput> = ({
           <input
             type="number"
             id={id}
+            name={name}
+            value={value}
             className="rounded-md border p-2 w-full text-gray-900 shadow-sm my-1"
             placeholder={countryCode}
           />
@@ -112,6 +119,8 @@ const Form: React.FC<IFormInput> = ({
       <input
         type={type}
         id={id}
+        name={name}
+        value={value}
         placeholder={placeholder}
         className="rounded-md border p-2 w-full text-gray-900 shadow-sm my-1"
         onChange={onChange}
@@ -120,4 +129,4 @@ const Form: React.FC<IFormInput> = ({
   );
 };
 
-export default Form;
+export default Forminput;
